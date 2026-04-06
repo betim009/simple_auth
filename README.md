@@ -1,8 +1,9 @@
 # Simple Auth
 
-Backend simples e didatico para estudo de autenticacao com JWT.
+Projeto separado em duas pastas:
 
-Agora o projeto tambem possui um frontend em Next.js dentro da pasta `frontend/`.
+- `backend` para a API em Node.js/Express
+- `frontend` para a interface em Next.js
 
 ## Stack
 
@@ -19,15 +20,21 @@ Agora o projeto tambem possui um frontend em Next.js dentro da pasta `frontend/`
 
 ### Backend
 
-1. Instale as dependencias:
+1. Entre na pasta do backend:
+
+```bash
+cd backend
+```
+
+2. Instale as dependencias:
 
 ```bash
 npm install
 ```
 
-2. Crie o arquivo `.env` com base no `.env.example`
+3. Crie o arquivo `.env` com base no `.env.example`
 
-3. Rode o projeto:
+4. Rode o projeto:
 
 ```bash
 npm run dev
