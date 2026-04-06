@@ -2,6 +2,8 @@
 
 Backend simples e didatico para estudo de autenticacao com JWT.
 
+Agora o projeto tambem possui um frontend em Next.js dentro da pasta `frontend/`.
+
 ## Stack
 
 - Node.js
@@ -14,6 +16,8 @@ Backend simples e didatico para estudo de autenticacao com JWT.
 - dotenv
 
 ## Como usar
+
+### Backend
 
 1. Instale as dependencias:
 
@@ -29,11 +33,40 @@ npm install
 npm run dev
 ```
 
+### Frontend
+
+1. Entre na pasta do frontend:
+
+```bash
+cd frontend
+```
+
+2. Instale as dependencias:
+
+```bash
+npm install
+```
+
+3. Crie o arquivo `.env.local` com base no `.env.example`
+
+4. Rode o frontend:
+
+```bash
+npm run dev
+```
+
 ## Rotas
 
 - `POST /api/auth/register`
 - `POST /api/auth/login`
 - `GET /api/auth/me`
+
+## Paginas do frontend
+
+- `/`
+- `/register`
+- `/login`
+- `/profile`
 
 ## Exemplo de body
 

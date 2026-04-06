@@ -1,0 +1,61 @@
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Navbar from "../components/Navbar";
+import api, { setAuthToken } from "../lib/api";
+
+export default function ProfilePage() {
+  const router = useRouter();
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        router.push("/login");
+        return;
+      }
+
+      setAuthToken(token);
+
+      try {
+        // Busca a rota protegida usando o token.
+        const response = await api.get("/api/auth/me");
+        setUser(response.data);
+      } catch (err) {
+        setError(err.response?.data?.message || "Erro ao carregar perfil");
+        localStorage.removeItem("token");
+      }
+    };
+
+    loadProfile();
+  }, [router]);
+
+  return (
+    <div className="page">
+      <Navbar />
+
+      <main className="card">
+        <h1>Perfil</h1>
+
+        {!user && !error && <p>Carregando dados do usuário...</p>}
+        {error && <p className="error">{error}</p>}
+
+        {user && (
+          <div className="profile-box">
+            <p>
+              <strong>ID:</strong> {user._id}
+            </p>
+            <p>
+              <strong>Nome:</strong> {user.name}
+            </p>
+            <p>
+              <strong>Email:</strong> {user.email}
+            </p>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
