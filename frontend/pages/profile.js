@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
-import api, { setAuthToken } from "../lib/api";
+import api, { clearToken, setAuthToken } from "../lib/api";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -25,7 +25,9 @@ export default function ProfilePage() {
         setUser(response.data);
       } catch (err) {
         setError(err.response?.data?.message || "Erro ao carregar perfil");
-        localStorage.removeItem("token");
+        // Se o token falhar, limpa tudo e volta para o login.
+        clearToken();
+        router.push("/login");
       }
     };
 

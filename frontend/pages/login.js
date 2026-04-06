@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
-import api, { setAuthToken } from "../lib/api";
+import api, { saveToken } from "../lib/api";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -28,9 +28,8 @@ export default function LoginPage() {
       const response = await api.post("/api/auth/login", formData);
       const token = response.data.token;
 
-      // Salva o token para as proximas chamadas.
-      localStorage.setItem("token", token);
-      setAuthToken(token);
+      // Salva o token para usar nas rotas protegidas.
+      saveToken(token);
 
       setMessage(response.data.message);
       router.push("/profile");
