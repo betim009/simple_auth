@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { clearToken } from "../lib/api";
 
 export default function Navbar() {
   const router = useRouter();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    // Faz logout removendo o token salvo.
+    clearToken();
     router.push("/login");
   };
 

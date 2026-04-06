@@ -15,6 +15,7 @@ const generateToken = (userId) => {
 
 router.post("/register", async (req, res) => {
   try {
+    // O frontend envia name, email e password no body.
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
@@ -38,6 +39,7 @@ router.post("/register", async (req, res) => {
 
     return res.status(201).json({
       message: "Usuario cadastrado com sucesso",
+      // Devolve apenas os dados seguros do usuario.
       user: {
         id: user._id,
         name: user.name,
@@ -51,6 +53,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
+    // O frontend envia email e password para validar o login.
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -74,6 +77,7 @@ router.post("/login", async (req, res) => {
 
     return res.json({
       message: "Login realizado com sucesso",
+      // O token sera salvo no frontend.
       token,
       user: {
         id: user._id,

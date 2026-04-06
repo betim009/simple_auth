@@ -8,8 +8,10 @@ dotenv.config();
 
 const app = express();
 
+// Conecta no banco antes de receber requisicoes.
 connectDB();
 
+// Permite receber JSON do frontend.
 app.use(cors());
 app.use(express.json());
 
@@ -17,6 +19,7 @@ app.get("/", (req, res) => {
   res.json({ message: "API de autenticacao rodando" });
 });
 
+// Todas as rotas de autenticacao ficam aqui.
 app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 5000;

@@ -10,6 +10,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const loadProfile = async () => {
+      // Primeiro tenta pegar o token salvo no navegador.
       const token = localStorage.getItem("token");
 
       if (!token) {

@@ -13,6 +13,7 @@ export default function LoginPage() {
   const [error, setError] = useState("");
 
   const handleChange = (event) => {
+    // Atualiza o estado com o valor dos inputs.
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
@@ -25,6 +26,7 @@ export default function LoginPage() {
     setError("");
 
     try {
+      // Envia email e senha para o backend.
       const response = await api.post("/api/auth/login", formData);
       const token = response.data.token;
 

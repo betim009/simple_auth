@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
     email: {
+      // O email precisa ser unico para evitar dois cadastros iguais.
       type: String,
       required: true,
       unique: true,
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
     },
     password: {
+      // Aqui fica a senha criptografada, nao a senha pura.
       type: String,
       required: true,
     },

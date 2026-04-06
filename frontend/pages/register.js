@@ -12,6 +12,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
 
   const handleChange = (event) => {
+    // Atualiza o campo conforme a pessoa digita.
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
@@ -24,6 +25,7 @@ export default function RegisterPage() {
     setError("");
 
     try {
+      // Envia os dados do formulario para o backend.
       const response = await api.post("/api/auth/register", formData);
 
       // Mostra a resposta que veio do backend.

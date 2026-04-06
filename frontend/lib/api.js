@@ -27,11 +27,13 @@ export function setAuthToken(token) {
 }
 
 export function saveToken(token) {
+  // Salva o token no navegador para usar depois.
   localStorage.setItem("token", token);
   setAuthToken(token);
 }
 
 export function clearToken() {
+  // Remove o token quando o usuario sair ou quando ele for invalido.
   localStorage.removeItem("token");
   setAuthToken(null);
 }
